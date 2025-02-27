@@ -48,6 +48,9 @@ public class UserEntity {
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private RoleEntity role;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<SaleEntity> sales;
+
 
     public UserDto toDTO() {
         return new UserDto(this);
